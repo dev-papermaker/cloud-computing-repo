@@ -1,0 +1,98 @@
+body {
+  background-color: #000;
+}
+
+#landing-nav {
+  z-index: 1;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+}
+
+#landing-header {
+  z-index: 1;
+  position: relative;
+  text-align: center;
+  padding-top: 40vh;
+}
+
+#landing-header h1 {
+  color: #fff;
+}
+
+.slideshow {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  z-index: 0;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.slideshow li {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-size: cover;
+  background-position: 50% 50%;
+  background-repeat: no-repeat;
+  opacity: 0;
+  z-index: 0;
+  animation: imageAnimation 50s linear infinite;
+}
+
+.slideshow li:nth-child(1) {
+  background-image: url(https://images.unsplash.com/photo-1533709752211-118fcaf03312?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&w=1000&q=80);
+}
+
+.slideshow li:nth-child(2) {
+  background-image: url(https://techcrunch.com/wp-content/uploads/2015/04/codecode.jpg?w=730&crop=1);
+  animation-delay: 10s;
+}
+
+.slideshow li:nth-child(3) {
+  background-image: url(https://spooniom.com/wp-content/uploads/all-your-base-are-belong-to-us.jpg);
+  animation-delay: 20s;
+}
+
+.slideshow li:nth-child(4) {
+  background-image: url(
+    https://www.herzing.edu/sites/default/files/styles/amp_metadata_content_image_min_696px_wide/public/xcomputer_code.jpg,
+    qitok=D9Ur3y6-.pagespeed.ic.Cc4mpDHD7v.jpg
+  );
+  animation-delay: 30s;
+}
+
+.slideshow li:nth-child(5) {
+  background-image: url(https://www.irishtimes.com/polopoly_fs/1.1847851.1403880765!/image/image.jpg_gen/derivatives/box_620_330/image.jpg);
+  animation-delay: 40s;
+}
+
+@keyframes imageAnimation {
+  0% {
+    opacity: 0;
+    animation-timing-function: ease-in;
+  }
+  10% {
+    opacity: 1;
+    animation-timing-function: ease-out;
+  }
+  20% {
+    opacity: 1;
+  }
+  30% {
+    opacity: 0;
+  }
+}
+
+/* Older browser support - .no-cssanimations class added by modernizr */
+
+.no-cssanimations .slideshow li {
+  opacity: 1;
+}
