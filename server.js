@@ -7,17 +7,17 @@ var express = require("express"),
     LocalStrategy = require("passport-local"),
     methodOverride = require("method-override"),
     // 
-    Campground = require("./models/campground"),
+    Memo = require("./models/memo"),
     Comment = require("./models/comment"),
     User = require("./models/user");
 
 
 // REQUIRING ROUTES
 var commentRoutes = require("./routes/comments"),
-    campgroundRoutes = require("./routes/campgrounds"),
+    memoRoutes = require("./routes/memos"),
     indexRoutes = require("./routes/index");
 
-mongoose.connect('mongodb+srv://myusername:42@cluster0-fkxcp.mongodb.net/yelpcamp', {
+mongoose.connect('mongodb+srv://myusername:42@cluster0-fkxcp.mongodb.net/mydb', {
     useNewUrlParser: true,
     useCreateIndex: true
 }).then(() => {
@@ -51,14 +51,9 @@ app.use(function (req, res, next) {
 });
 
 app.use(indexRoutes);
-app.use("/campgrounds", campgroundRoutes);
-app.use("/campgrounds/:id/comments", commentRoutes);
+app.use("/memos", memoRoutes);
+app.use("/memos/:id/comments", commentRoutes);
 
-// app.get('/', (req, res) => {
-//     res.send('Is this on?');
-// });
-
-// app listen
 app.listen(8080, () => {
     console.log('server is on 8080.');
 });

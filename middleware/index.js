@@ -1,18 +1,17 @@
-var Campground = require("../models/campground");
+var Memo = require("../models/memo");
 var Comment = require("../models/comment");
 
 var middleware = {};
 
-middleware.checkCampgroundOwnership = function(req, res, next) {
+middleware.checkMemoOwnership = function (req, res, next) {
     // IS UER LOGGED IN?
     if (req.isAuthenticated()) {
-        Campground.findById(req.params.id, function(err, foundComment) {
+        Memo.findById(req.params.id, function (err, foundComment) {
             if (err) {
-                req.flash("error", "Campground not found!");
+                req.flash("error", "Memo not found!");
                 res.redirect("back");
             }
             else {
-                // DOES USER OWN THE CAMPGROUND?  
                 if (foundComment.author.id.equals(req.user._id)) {
                     next();
                 }
@@ -30,10 +29,10 @@ middleware.checkCampgroundOwnership = function(req, res, next) {
     };
 };
 
-middleware.checkCommentOwnership = function(req, res, next) {
+middleware.checkCommentOwnership = function (req, res, next) {
     // IS UER LOGGED IN?
     if (req.isAuthenticated()) {
-        Comment.findById(req.params.comment_id, function(err, foundComment) {
+        Comment.findById(req.params.comment_id, function (err, foundComment) {
             if (err) {
                 res.redirect("back");
             }
@@ -55,7 +54,7 @@ middleware.checkCommentOwnership = function(req, res, next) {
     };
 };
 
-middleware.isLoggedIn = function(req, res, next) {
+middleware.isLoggedIn = function (req, res, next) {
     if (req.isAuthenticated()) {
         return next();
     };
